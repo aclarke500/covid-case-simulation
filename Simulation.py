@@ -8,7 +8,7 @@ print("Welcome to the COVID-19 simulator, enter some arguments or press d for de
 infection_constant = input("infection constant: ")
 # infection_constant = "d"
 
-if infection_constant == "d":
+if infection_constant == "d" or infection_constant == "D":
     # defaults if user does not want to specify values
     infection_constant = 1  # average infected person infects x people per day
     inital_infection_size = 1
@@ -58,8 +58,8 @@ def day_during_virus():
 
     # how many people to infect
     amount_to_infect = round(infection_constant * amount_of_people_infected)
+    
     # infect n amount of people
-    # print("infect", amount_to_infect)
     for i in range(amount_to_infect):
         # we need to infect someone who isn't sick and isn't immune
         found_valid_choice = False
@@ -80,7 +80,7 @@ def day_during_virus():
 
                 else:
                     immunity_choice = random.randint(0, 100)
-
+                    # immunity works as immunity_strength times out of 100
                     if immunity_choice > immunity_strength:
 
                         population[choice].infect()
@@ -157,6 +157,7 @@ x_values = days
 # add labels
 plt.xlabel("Day")
 plt.ylabel("Number of people")
+plt.title("Cases vs immunity overtime")
 
 # give each scatter a name for the legend
 sick=plt.scatter(x_values, data[0], color='k', s=5)
@@ -164,7 +165,6 @@ immune=plt.scatter(x_values, data[1], color='g', s=3)
 # append legend
 plt.legend((sick, immune),("Sick people", "Immune people"))
 
-plt.title("Cases vs immunity overtime")
 # plot
 plt.plot(x_values,data[0], color='k')
 plt.plot(x_values, data[1], color='g')
