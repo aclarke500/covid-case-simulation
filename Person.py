@@ -17,24 +17,5 @@ class Person:
     def day(self):
         self.days_since_recovery+=1
 
-    # def day(self, max_sickness_length):
- 
-    #     # self.days_spent_sick+=1
-
-    #     if self.days_spent_sick < max_sickness_length:
-    #         self.heal()
-
     def get_sick_days(self):
         return self.days_spent_sick
-    
-    
-
-
-
-
-
-
-# print(p1.sick)
-
-# p1.infect()
-# print(p1.days_spent_sick, p1.sick)
